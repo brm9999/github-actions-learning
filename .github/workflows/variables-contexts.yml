@@ -1,0 +1,34 @@
+name: Example - Variables and contexts
+
+on:
+  workflow_dispatch:
+
+env:
+  PROJECT_NAME: TaskFlow
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      release-name: ${{ steps.metadata.outputs.release-name }}
+    steps:
+      - id: metadata
+        name: Create metadata
+        run: echo "release-name=${PROJECT_NAME}-${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+      - name: Show contexts
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RUNNER: ${{ runner.os }}
+        run: |
+          echo "Project: $PROJECT_NAME"
+          echo "Event: $EVENT_NAME"
+          echo "Runner: $RUNNER"
+
+  report:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ needs.prepare.result == 'success' }}
+    steps:
+      - run: echo "Release name is ${{ needs.prepare.outputs.release-name }}"
