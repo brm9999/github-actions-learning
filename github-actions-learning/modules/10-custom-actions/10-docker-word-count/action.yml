@@ -1,0 +1,15 @@
+name: Docker word count
+description: Count words in a string inside a container
+inputs:
+  text:
+    description: Text to count
+    required: false
+    default: TaskFlow custom actions
+outputs:
+  count:
+    description: Number of words
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.text }}

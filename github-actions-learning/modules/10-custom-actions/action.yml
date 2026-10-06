@@ -1,0 +1,10 @@
+name: TaskFlow comment action
+description: Add a learning comment to the current issue or pull request
+inputs:
+  message:
+    description: Comment text
+    required: true
+    default: TaskFlow workflow completed
+runs:
+  using: node20
+  main: index.js

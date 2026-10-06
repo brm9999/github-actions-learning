@@ -1,0 +1,19 @@
+name: Fail when asked
+description: Exit 0 unless should-fail is true
+inputs:
+  should-fail:
+    description: Set to true to fail the step
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        SHOULD_FAIL: ${{ inputs.should-fail }}
+      run: |
+        if [ "$SHOULD_FAIL" = "true" ]; then
+          echo "Failing because should-fail is true"
+          exit 1
+        fi
+        echo "Continuing"

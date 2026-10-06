@@ -1,0 +1,13 @@
+name: JavaScript slug
+description: Turn a title into a lowercase slug
+inputs:
+  title:
+    description: Text to slugify
+    required: false
+    default: TaskFlow Gallery
+outputs:
+  slug:
+    description: Lowercase hyphenated title
+runs:
+  using: node20
+  main: index.js

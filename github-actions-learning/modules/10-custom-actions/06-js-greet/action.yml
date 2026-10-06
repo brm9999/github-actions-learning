@@ -1,0 +1,13 @@
+name: JavaScript greet
+description: Greet someone with Node and no npm packages
+inputs:
+  who-to-greet:
+    description: Name to greet
+    required: false
+    default: TaskFlow
+outputs:
+  greeting:
+    description: Greeting text
+runs:
+  using: node20
+  main: index.js

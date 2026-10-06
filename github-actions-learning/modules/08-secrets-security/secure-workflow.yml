@@ -1,0 +1,23 @@
+name: Example - Secure workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use a secret without printing it
+        env:
+          DEPLOY_TARGET: ${{ secrets.DEPLOY_TARGET }}
+        run: |
+          if [ -z "$DEPLOY_TARGET" ]; then
+            echo "DEPLOY_TARGET is not configured"
+            exit 1
+          fi
+          echo "A deployment target is configured for this environment."

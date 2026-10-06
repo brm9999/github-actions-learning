@@ -1,0 +1,103 @@
+name: Example - Custom action gallery
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Echo inputs
+        id: echo-inputs
+        uses: ./modules/10-custom-actions/01-echo-inputs
+        with:
+          title: TaskFlow
+          note: gallery
+
+      - name: Set an output
+        id: set-output
+        uses: ./modules/10-custom-actions/02-set-output
+        with:
+          value: gallery-ok
+
+      - name: Print composite output
+        id: print-result
+        run: echo "${{ steps.set-output.outputs.result }}"
+
+      - name: Append an environment variable
+        id: append-env
+        uses: ./modules/10-custom-actions/03-append-env
+        with:
+          name: TASKFLOW_NOTE
+          value: from-gallery
+
+      - name: Read the environment variable
+        id: read-env
+        run: echo "$TASKFLOW_NOTE"
+
+      - name: Write the job summary
+        id: job-summary
+        uses: ./modules/10-custom-actions/04-job-summary
+        with:
+          text: Gallery finished the composite actions.
+
+      - name: Continue because should-fail is false
+        id: fail-when-asked
+        uses: ./modules/10-custom-actions/05-fail-when-asked
+        with:
+          should-fail: 'false'
+
+      - name: JavaScript greet
+        id: js-greet
+        uses: ./modules/10-custom-actions/06-js-greet
+        with:
+          who-to-greet: TaskFlow
+
+      - name: Print JavaScript greeting
+        id: print-greeting
+        run: echo "${{ steps.js-greet.outputs.greeting }}"
+
+      - name: JavaScript repository facts
+        id: js-repo
+        uses: ./modules/10-custom-actions/07-js-repo-facts
+
+      - name: Print repository
+        id: print-repository
+        run: echo "${{ steps.js-repo.outputs.repository }}"
+
+      - name: JavaScript slug
+        id: js-slug
+        uses: ./modules/10-custom-actions/08-js-slug
+        with:
+          title: TaskFlow Gallery Run
+
+      - name: Print slug
+        id: print-slug
+        run: echo "${{ steps.js-slug.outputs.slug }}"
+
+      - name: Docker uppercase
+        id: docker-upper
+        uses: ./modules/10-custom-actions/09-docker-upper
+        with:
+          text: taskflow
+
+      - name: Print uppercase text
+        id: print-upper
+        run: echo "${{ steps.docker-upper.outputs.text }}"
+
+      - name: Docker word count
+        id: docker-words
+        uses: ./modules/10-custom-actions/10-docker-word-count
+        with:
+          text: TaskFlow custom actions
+
+      - name: Print word count
+        id: print-count
+        run: echo "${{ steps.docker-words.outputs.count }}"

@@ -1,0 +1,18 @@
+name: Example - Runner info
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "os=${{ runner.os }}"
+          echo "arch=${{ runner.arch }}"
+          echo "name=${{ runner.name }}"
+          echo "workspace=$GITHUB_WORKSPACE"
+          echo "ref=$GITHUB_REF"

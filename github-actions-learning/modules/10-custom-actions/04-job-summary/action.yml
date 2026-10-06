@@ -1,0 +1,16 @@
+name: Job summary
+description: Append a line to the workflow job summary
+inputs:
+  text:
+    description: Summary line
+    required: false
+    default: TaskFlow custom action ran
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        TEXT: ${{ inputs.text }}
+      run: |
+        clean=$(printf '%s' "$TEXT" | tr -d '\r')
+        printf '%s\n' "$clean" >> "$GITHUB_STEP_SUMMARY"

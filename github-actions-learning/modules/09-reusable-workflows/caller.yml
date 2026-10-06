@@ -1,0 +1,28 @@
+name: Example - Call reusable workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  call-ci:
+    uses: ./.github/workflows/reusable-taskflow-ci.yml
+    with:
+      node-version: '20'
+
+  call-ci-node-22:
+    uses: ./.github/workflows/reusable-taskflow-ci.yml
+    with:
+      node-version: '22'
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./modules/09-reusable-workflows/composite-setup
+        with:
+          node-version: '20'
+      - run: npm test
+        working-directory: demo-app

@@ -1,0 +1,32 @@
+# Composite action: setup TaskFlow Node
+#
+# Called from caller.yml after checkout:
+#   jobs:
+#     test:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - uses: actions/checkout@v4
+#         - uses: ./modules/09-reusable-workflows/composite-setup
+#           with:
+#             node-version: '20'
+#         - run: npm test
+#           working-directory: demo-app
+
+name: Setup TaskFlow Node
+description: Checkout, Node, and npm ci for demo-app
+inputs:
+  node-version:
+    description: Node.js version
+    required: false
+    default: '20'
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: npm
+        cache-dependency-path: demo-app/package-lock.json
+    - run: npm ci
+      shell: bash
+      working-directory: demo-app

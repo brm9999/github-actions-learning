@@ -1,0 +1,21 @@
+name: Set output
+description: Write one action output from a composite step
+inputs:
+  value:
+    description: Text to publish as the result output
+    required: false
+    default: ok
+outputs:
+  result:
+    description: The value that was written
+    value: ${{ steps.write.outputs.result }}
+runs:
+  using: composite
+  steps:
+    - id: write
+      shell: bash
+      env:
+        VALUE: ${{ inputs.value }}
+      run: |
+        clean=$(printf '%s' "$VALUE" | tr -d '\r\n')
+        echo "result=${clean}" >> "$GITHUB_OUTPUT"

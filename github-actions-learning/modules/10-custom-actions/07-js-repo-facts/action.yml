@@ -1,0 +1,12 @@
+name: JavaScript repository facts
+description: Publish repository, sha, and ref from the default runner environment
+outputs:
+  repository:
+    description: owner/name
+  sha:
+    description: Commit SHA
+  ref:
+    description: Git ref
+runs:
+  using: node20
+  main: index.js

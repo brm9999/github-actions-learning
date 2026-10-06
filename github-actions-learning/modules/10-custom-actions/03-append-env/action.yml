@@ -1,0 +1,25 @@
+name: Append environment variable
+description: Add a TASKFLOW_ variable for later steps in the same job
+inputs:
+  name:
+    description: Variable name, must start with TASKFLOW_
+    required: true
+    default: TASKFLOW_NOTE
+  value:
+    description: Single-line value
+    required: false
+    default: set-by-action
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        VAR_NAME: ${{ inputs.name }}
+        VAR_VALUE: ${{ inputs.value }}
+      run: |
+        if ! printf '%s' "$VAR_NAME" | grep -Eq '^TASKFLOW_[A-Z0-9_]+$'; then
+          echo "name must match TASKFLOW_[A-Z0-9_]+"
+          exit 1
+        fi
+        clean=$(printf '%s' "$VAR_VALUE" | tr -d '\r\n')
+        echo "${VAR_NAME}=${clean}" >> "$GITHUB_ENV"

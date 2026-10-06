@@ -1,0 +1,24 @@
+name: Example - Debugging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  debug-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+      - name: Named failure (toggle for the exercise)
+        run: echo "Change this step to exit 1 to practice reading logs"
+      - name: Runs if something failed
+        if: failure()
+        run: echo "A previous step failed — this is if: failure()"
+      - name: Runs always
+        if: always()
+        run: echo "if: always() — success, failure, or cancelled"

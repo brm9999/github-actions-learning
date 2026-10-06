@@ -1,0 +1,23 @@
+name: Example - Docker action
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v4
+      - name: Run Docker greet action
+        id: greet
+        uses: ./modules/10-custom-actions/docker-action
+        with:
+          who-to-greet: TaskFlow
+      - name: Print greeting
+        id: print-greeting
+        run: echo "${{ steps.greet.outputs.greeting }}"

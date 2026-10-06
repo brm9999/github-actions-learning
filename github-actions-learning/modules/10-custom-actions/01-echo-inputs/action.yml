@@ -1,0 +1,19 @@
+name: Echo inputs
+description: Print two inputs from a composite action
+inputs:
+  title:
+    description: Short title
+    required: false
+    default: TaskFlow
+  note:
+    description: Extra note
+    required: false
+    default: hello
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        TITLE: ${{ inputs.title }}
+        NOTE: ${{ inputs.note }}
+      run: echo "title=${TITLE} note=${NOTE}"

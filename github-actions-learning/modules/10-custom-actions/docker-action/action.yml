@@ -1,0 +1,15 @@
+name: TaskFlow greet
+description: Greet someone from a Docker container action
+inputs:
+  who-to-greet:
+    description: Name to greet
+    required: false
+    default: TaskFlow
+outputs:
+  greeting:
+    description: Greeting printed by the container
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.who-to-greet }}

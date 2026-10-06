@@ -1,0 +1,15 @@
+name: Docker uppercase
+description: Uppercase text inside a container
+inputs:
+  text:
+    description: Text to uppercase
+    required: false
+    default: taskflow
+outputs:
+  text:
+    description: Uppercase text
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.text }}

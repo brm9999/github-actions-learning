@@ -1,0 +1,21 @@
+name: Example - Concurrency
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: learning-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: echo "This run is ${{ github.run_id }} on ${{ github.ref }}"
+      - name: Optional flaky demo
+        continue-on-error: true
+        run: echo "If this failed, the next step would still run"
+      - run: echo "Still running"

@@ -1,0 +1,27 @@
+name: Example - Custom JavaScript action
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install action dependencies
+        working-directory: modules/10-custom-actions
+        run: npm install --ignore-scripts
+      - name: Run local action
+        uses: ./modules/10-custom-actions
+        with:
+          message: "Thanks for opening this TaskFlow contribution!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
