@@ -5,26 +5,30 @@ Use this file as a learning journal. Add the date, what you changed, and a link 
 ## Repos
 
 | Role | URL |
-| --- | --- |
-| Study notes | https://github.com/WebexCloudPlatform/kubernetes-learn (`github-actions-learning/`) |
-| Hands-on (personal GitHub — reuse this) | https://github.com/auxislabs/github-actions-learning |
-| Demo app | `demo-app/` at the **personal** repo root |
-| Local clone | `/Users/sswamyap/suresh/git/github-actions-learning` |
-| Actions | https://github.com/auxislabs/github-actions-learning/actions |
+|------|-----|
+| Study notes | https://github.com/WebexCloudPlatform/kubernetes-learn (github-actions-learning/) |
+| Hands-on (personal GitHub — reuse this) | https://github.com/brm9999/github-actions-learning |
+| Demo app | `demo-app/` at the personal repo root |
+| Local clone | flattened so `demo-app/` and `.github/` are at the repo root |
+| Actions | https://github.com/brm9999/github-actions-learning/actions |
 
-GitHub CLI: use `gh auth switch --user auxislabs` before pushing this repo; `sswamyap_cisco` is for kubernetes-learn only.
+GitHub CLI: use `gh auth switch --user brm9999` before pushing this repo; `bmache_cisco` is for kubernetes-learn only. Cisco Enterprise has Actions disabled.
 
-## Journal — 24 Sep 2026
+## Journal — 06 Oct 2026
 
-- Created personal repo **auxislabs/github-actions-learning** and pushed the lab as the repo root (`demo-app/` at root). First `git push` failed as `sswamyap_cisco`; re-authenticated **auxislabs** with a new PAT, then `main` pushed successfully.
-- **Module 02:** walkthrough + self-check done. Notes: `modules/02-foundations/README.md`.
-- **Module 03:** started. TaskFlow CI is already in the personal repo (`.github/workflows/ci.yml`). Next: break a test on a feature branch, open a PR, see red then green. Notes: `modules/03-ci-pipeline/README.md`. Self-check not answered yet.
+Created / reused personal repo `brm9999/github-actions-learning` so workflows can run (Actions are disabled on the Cisco Enterprise account). First push failed as `bmache_cisco` (macOS Keychain); cleared those credentials and re-authenticated `brm9999` with a PAT. Nested clone flattened so `.github/workflows/` sits at the repo root. Installed Node.js v20.20.2 / npm 10.8.2 via Homebrew.
+
+Module 02: added `.github/workflows/first-workflow.yml` (`workflow_dispatch`). Manual run **First workflow #1** succeeded (~5s). Job `hello` on `ubuntu-latest` printed `Hello from GitHub Actions`; runner OS Linux, workspace `/home/runner/work/github-actions-learning/github-actions-learning`. Notes: `modules/02-foundations/README.md`.
+
+Module 03: not started. Next: CI for `demo-app` (checkout, Node 20, `npm ci`, lint, test, build) on push/PR. Notes: `modules/03-ci-pipeline/README.md`.
+
+## Module status
 
 | Module | Status | Notes / workflow run |
-| --- | --- | --- |
-| 01 Git and GitHub | Done | Personal repo created and `main` pushed: https://github.com/auxislabs/github-actions-learning |
-| 02 Foundations | Done | Walkthrough + self-check in `modules/02-foundations/README.md` |
-| 03 CI pipeline | In progress | Notes in `modules/03-ci-pipeline/README.md`; first CI run: check Actions on auxislabs; exercise (break test / PR) not finished; self-check not answered |
+|--------|--------|----------------------|
+| 01 Git and GitHub | Done | Personal repo created and main pushed: https://github.com/brm9999/github-actions-learning |
+| 02 Foundations | Done | Walkthrough + first workflow. Run: _paste URL from Actions, e.g._ https://github.com/brm9999/github-actions-learning/actions/runs/37457501650/job/112248614387 |
+| 03 CI pipeline | Not started | Notes in `modules/03-ci-pipeline/README.md` |
 | 04 Triggers | Not started | Full notes + event catalog: `modules/04-triggers/README.md` |
 | 05 Variables and contexts | Not started | Notes in `modules/05-variables-contexts/README.md` |
 | 06 Cache and artifacts | Not started | Notes in `modules/06-artifacts-cache/README.md` |
