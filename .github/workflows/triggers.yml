@@ -1,0 +1,29 @@
+name: Example - Events and triggers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'demo-app/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to target
+        required: true
+        default: staging
+        type: choice
+        options: [staging, production]
+  schedule:
+    - cron: '30 6 * * 1-5'
+
+jobs:
+  show-event:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Manual environment: ${{ inputs.environment }}"
