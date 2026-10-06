@@ -1,19 +1,23 @@
-name: First workflow
+name: Example - CI pipeline
 
 on:
-  workflow_dispatch:
-
-permissions:
-  contents: read
+  push:
+  pull_request:
 
 jobs:
-  hello:
+  ci:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: demo-app
     steps:
-      - name: Say hello
-        run: echo "Hello from GitHub Actions"
-
-      - name: Show runner information
-        run: |
-          echo "Operating system: $RUNNER_OS"
-          echo "Workspace: $GITHUB_WORKSPACE"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: demo-app/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
