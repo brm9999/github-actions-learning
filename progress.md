@@ -18,17 +18,18 @@ GitHub CLI: use `gh auth switch --user brm9999` before pushing this repo; `bmach
 
 Created / reused personal repo `brm9999/github-actions-learning` so workflows can run (Actions are disabled on the Cisco Enterprise account). First push failed as `bmache_cisco` (macOS Keychain); cleared those credentials and re-authenticated `brm9999` with a PAT. Nested clone flattened so `.github/workflows/` sits at the repo root. Installed Node.js v20.20.2 / npm 10.8.2 via Homebrew.
 
-Module 02: added `.github/workflows/first-workflow.yml` (`workflow_dispatch`). Manual run **First workflow #1** succeeded (~5s). Job `hello` on `ubuntu-latest` printed `Hello from GitHub Actions`; runner OS Linux, workspace `/home/runner/work/github-actions-learning/github-actions-learning`. Notes: `modules/02-foundations/README.md`.
+Module 02: added `.github/workflows/first-workflow.yml` (`workflow_dispatch`). Manual run **First workflow #1** succeeded. Job `hello` on `ubuntu-latest` printed `Hello from GitHub Actions`.
 
-Module 03: not started. Next: CI for `demo-app` (checkout, Node 20, `npm ci`, lint, test, build) on push/PR. Notes: `modules/03-ci-pipeline/README.md`.
+Module 03: copied `ci.yml` to `.github/workflows/ci.yml` and pushed to `main`. First CI run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244  
+Next: break a test on a feature branch, open a PR, see red then green. Notes: `modules/03-ci-pipeline/README.md`. Self-check not answered yet.
 
 ## Module status
 
 | Module | Status | Notes / workflow run |
 |--------|--------|----------------------|
 | 01 Git and GitHub | Done | Personal repo created and main pushed: https://github.com/brm9999/github-actions-learning |
-| 02 Foundations | Done | Walkthrough + first workflow. Run: _paste URL from Actions, e.g._ https://github.com/brm9999/github-actions-learning/actions/runs/37457501650/job/112248614387 |
-| 03 CI pipeline | Not started | Notes in `modules/03-ci-pipeline/README.md` |
+| 02 Foundations | Done | Walkthrough + first workflow (manual `workflow_dispatch`) |
+| 03 CI pipeline | In progress | First CI run green: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244 — exercise (break test / PR) not finished; self-check not answered |
 | 04 Triggers | Not started | Full notes + event catalog: `modules/04-triggers/README.md` |
 | 05 Variables and contexts | Not started | Notes in `modules/05-variables-contexts/README.md` |
 | 06 Cache and artifacts | Not started | Notes in `modules/06-artifacts-cache/README.md` |
