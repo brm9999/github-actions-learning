@@ -20,8 +20,10 @@ Created / reused personal repo `brm9999/github-actions-learning` so workflows ca
 
 Module 02: added `.github/workflows/first-workflow.yml` (`workflow_dispatch`). Manual run **First workflow #1** succeeded. Job `hello` on `ubuntu-latest` printed `Hello from GitHub Actions`.
 
-Module 03: copied `ci.yml` to `.github/workflows/ci.yml` and pushed to `main`. First CI run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244  
-Next: break a test on a feature branch, open a PR, see red then green. Notes: `modules/03-ci-pipeline/README.md`. Self-check not answered yet.
+Module 03: copied `ci.yml` to `.github/workflows/ci.yml` and pushed to `main`. First CI run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244
+
+Module 04: added `.github/workflows/triggers.yml` (`push` with path filters, `pull_request`, `workflow_dispatch` inputs, weekday cron). First triggers run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37463398543  
+Notes: `modules/04-triggers/README.md`.
 
 ## Module status
 
@@ -29,8 +31,8 @@ Next: break a test on a feature branch, open a PR, see red then green. Notes: `m
 |--------|--------|----------------------|
 | 01 Git and GitHub | Done | Personal repo created and main pushed: https://github.com/brm9999/github-actions-learning |
 | 02 Foundations | Done | Walkthrough + first workflow (manual `workflow_dispatch`) |
-| 03 CI pipeline | In progress | First CI run green: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244 — exercise (break test / PR) not finished; self-check not answered |
-| 04 Triggers | Not started | Full notes + event catalog: `modules/04-triggers/README.md` |
+| 03 CI pipeline | Done | First CI run green: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244 |
+| 04 Triggers | Done | `triggers.yml` run: https://github.com/brm9999/github-actions-learning/actions/runs/37463398543 |
 | 05 Variables and contexts | Not started | Notes in `modules/05-variables-contexts/README.md` |
 | 06 Cache and artifacts | Not started | Notes in `modules/06-artifacts-cache/README.md` |
 | 07 Matrix | Not started | Notes in `modules/07-matrix/README.md` |
