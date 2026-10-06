@@ -23,7 +23,10 @@ Module 02: added `.github/workflows/first-workflow.yml` (`workflow_dispatch`). M
 Module 03: copied `ci.yml` to `.github/workflows/ci.yml` and pushed to `main`. First CI run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244
 
 Module 04: added `.github/workflows/triggers.yml` (`push` with path filters, `pull_request`, `workflow_dispatch` inputs, weekday cron). First triggers run succeeded: https://github.com/brm9999/github-actions-learning/actions/runs/37463398543  
-Notes: `modules/04-triggers/README.md`.
+PR #4 log: `Event: pull_request` · `Ref: refs/pull/4/merge` · `Manual environment:` empty (expected). Notes: `modules/04-triggers/README.md`.
+
+Module 05: added variables/contexts workflow (`workflow_dispatch`). Workflow `env.PROJECT_NAME`, step `$GITHUB_OUTPUT`, job `outputs`, and `needs:` all worked. Run: https://github.com/brm9999/github-actions-learning/actions/runs/37467826773  
+Notes: `modules/05-variables-contexts/README.md`.
 
 ## Module status
 
@@ -33,7 +36,7 @@ Notes: `modules/04-triggers/README.md`.
 | 02 Foundations | Done | Walkthrough + first workflow (manual `workflow_dispatch`) |
 | 03 CI pipeline | Done | First CI run green: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244 |
 | 04 Triggers | Done | `triggers.yml` run: https://github.com/brm9999/github-actions-learning/actions/runs/37463398543 |
-| 05 Variables and contexts | Not started | Notes in `modules/05-variables-contexts/README.md` |
+| 05 Variables and contexts | Done | Run: https://github.com/brm9999/github-actions-learning/actions/runs/37467826773 |
 | 06 Cache and artifacts | Not started | Notes in `modules/06-artifacts-cache/README.md` |
 | 07 Matrix | Not started | Notes in `modules/07-matrix/README.md` |
 | 08 Secrets and security | Not started | Notes in `modules/08-secrets-security/README.md` |
