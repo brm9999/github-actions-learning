@@ -14,7 +14,7 @@ Use this file as a learning journal. Add the date, what you changed, and a link 
 
 GitHub CLI: use `gh auth switch --user brm9999` before pushing this repo; `bmache_cisco` is for kubernetes-learn only. Cisco Enterprise has Actions disabled.
 
-## Journal — 06 Oct 2026
+## Journal — 07 Oct 2026
 
 Created / reused personal repo `brm9999/github-actions-learning` so workflows can run (Actions are disabled on the Cisco Enterprise account). First push failed as `bmache_cisco` (macOS Keychain); cleared those credentials and re-authenticated `brm9999` with a PAT. Nested clone flattened so `.github/workflows/` sits at the repo root. Installed Node.js v20.20.2 / npm 10.8.2 via Homebrew.
 
@@ -28,6 +28,9 @@ PR #4 log: `Event: pull_request` · `Ref: refs/pull/4/merge` · `Manual environm
 Module 05: added variables/contexts workflow (`workflow_dispatch`). Workflow `env.PROJECT_NAME`, step `$GITHUB_OUTPUT`, job `outputs`, and `needs:` all worked. Run: https://github.com/brm9999/github-actions-learning/actions/runs/37467826773  
 Notes: `modules/05-variables-contexts/README.md`.
 
+Module 06: added cache/artifacts workflow. `setup-node` npm cache keyed on `demo-app/package-lock.json`; `build` uploaded `taskflow-dist`; `inspect` downloaded it on a new VM and listed files. Run: https://github.com/brm9999/github-actions-learning/actions/runs/37583504495  
+Notes: `modules/06-artifacts-cache/README.md`.
+
 ## Module status
 
 | Module | Status | Notes / workflow run |
@@ -37,7 +40,7 @@ Notes: `modules/05-variables-contexts/README.md`.
 | 03 CI pipeline | Done | First CI run green: https://github.com/brm9999/github-actions-learning/actions/runs/37459694244 |
 | 04 Triggers | Done | `triggers.yml` run: https://github.com/brm9999/github-actions-learning/actions/runs/37463398543 |
 | 05 Variables and contexts | Done | Run: https://github.com/brm9999/github-actions-learning/actions/runs/37467826773 |
-| 06 Cache and artifacts | Not started | Notes in `modules/06-artifacts-cache/README.md` |
+| 06 Cache and artifacts | Done | Run: https://github.com/brm9999/github-actions-learning/actions/runs/37583504495 |
 | 07 Matrix | Not started | Notes in `modules/07-matrix/README.md` |
 | 08 Secrets and security | Not started | Notes in `modules/08-secrets-security/README.md` |
 | 09 Reusable workflows | Not started | Notes in `modules/09-reusable-workflows/README.md` |
